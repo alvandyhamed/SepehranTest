@@ -1,54 +1,83 @@
-# React + TypeScript + Vite
+# 🧠 React Performance Challenge
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Build a small performant React app using the given dummy API.  
+This challenge evaluates your knowledge of:
 
-Currently, two official plugins are available:
+- Controlled inputs & debouncing
+- API fetching and error handling
+- Performance (caching, memoization)
+- State management (local state is enough)
+- Closures & React.memo
+- Clean code and UI behavior
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Task Overview
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Build a simple user search app with the following behavior:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### 1. Search Input
+- Implement a text input.
+- Debounce user input (300–500ms).
+- Call the API using this helper:
+
+```
+getUsers(query?: string): Promise<UserItem[]>
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- Handle:
+    - loading
+    - error
+    - empty state
+    - data list
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+> 💡 You can extend the `UserItem` type if needed.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+---
+
+### 2. User Component
+- File: `components/User.tsx`
+- Implement it to show all user fields with simple styling.
+- Use `generateColorByAge(age)` from `lib/helpers` to get a color.
+- Use that color for a part of the UI (e.g., background, badge, etc.).
+
+---
+
+### 3. Selectable Users
+- Clicking a user toggles their selection.
+- Selected items should be visually different.
+- Show selected users’ names or last names above the list.
+- Clear selected users when new data is fetched.
+
+---
+
+### 4. Performance Requirements
+- Ensure the app behaves well during fast input changes.
+- Prevent UI from updating more than needed.
+- Think about reusing values for performance-heavy operations.
+- Use efficient data structures for checking selections.
+
+> ⭐ Extra point if you improve the performance of `generateColorByAge`.
+
+---
+
+## ✅ Rules
+
+- You can install any packages.
+- Do not remove or change hardcoded logic (e.g., delay or heavy task).
+- You can extend code, types, and components.
+
+---
+
+## 🧪 Expectations
+
+No tests are required, but we will review for:
+
+- Smooth and responsive UI
+- No unnecessary API calls
+- Proper caching and memo usage
+- Clean code and understandable logic
+
+---
+
+Good luck and have fun building!
